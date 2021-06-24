@@ -2,7 +2,7 @@
 
 # VARS
 fdeploy="./Terraform/src/deployment"
-
+fbackend="./Terraform/RemoteState/"
 
 # Func
 ConfTfVars () {
@@ -16,27 +16,18 @@ region     = \"${region}\"
 account    = \"${account}\"
 """ > ${fdeploy}/terraform.tfvars
 ls ${fdeploy}/terraform.tfvars
-
-
-echo "end"
 }
 
 CreateGKE () {
     [[ -f ${fdeploy}/terraform.tfvars ]] && echo || ConfTfVars
-    pwd
-    read
     cd ${fdeploy}
-    read
-    pwd
-    read
-    terraform init && terraform apply --auto-approve
+    terraform init && terraform apply --auto-approve && cd -
 }
 
 CreateBackend () {
-    cd ./Terraform/RemoteState/
-    terraform init && terraform apply --auto-approve
+    cd ${fbackend}
+    terraform init && terraform apply --auto-approve && cd -
     echo "Created Remote State - OK"
-    read
 }
 
 read -p "Create Bucket for Remote Backend? (y/N)" op
@@ -44,12 +35,4 @@ read -p "Create Bucket for Remote Backend? (y/N)" op
 
 read -p "Create GKE? (y/N)" op
 [[ ${op} == "y" || ${op} == "Y" ]] && CreateGKE
-
-
-
-
-
-
-
-
 
