@@ -1,5 +1,5 @@
 data "google_service_account" "myaccount" {
-  account_id = var.main_account
+  account_id = var.account
 }
 
 # resource "google_service_account" "default" {

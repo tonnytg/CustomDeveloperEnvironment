@@ -9,7 +9,7 @@ variable "region" {
   description = "Region of project"
 }
 
-variable "main_account" {
+variable "account" {
   default     = "username"
   type        = string
   description = "username@domain.com of project"
