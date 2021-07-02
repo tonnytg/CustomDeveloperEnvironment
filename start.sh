@@ -30,9 +30,17 @@ CreateBackend () {
     echo "Created Remote State - OK"
 }
 
+DelAll () {
+    cd ${fdeploy}
+    terraform destroy --auto-approve && cd -
+    cd ${fbackend}
+    terraform destroy --auto-approve && cd -
+}
+ 
 read -p "Create Bucket for Remote Backend? (y/N)" op
 [[ ${op} == "y" || ${op} == "Y" ]] && CreateBackend
 
 read -p "Create GKE? (y/N)" op
 [[ ${op} == "y" || ${op} == "Y" ]] && CreateGKE
 
+[[ ! -z $1 && $1 == "-d" ]] && DelAll
