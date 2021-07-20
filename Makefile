@@ -12,7 +12,7 @@ bucket:
 	terraform apply --auto-approve
 
 gke:
-	cd src/deployment && terraform init && \
+	cd Terraform/src/deployment && terraform init && \
 	terraform apply --auto-approve
 
 auth:

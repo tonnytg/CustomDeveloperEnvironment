@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "eng-venture-320213"
+    bucket = "eng-venture-320213-eu-tf-remote"
     prefix = "terraform/state"
     credentials = "~/.config/gcloud/eng-venture-320213-terraform-admin.json"
   }
