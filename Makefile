@@ -9,7 +9,7 @@ test:
 
 bucket:
 	cd Terraform/RemoteState && terraform init && \
-	terraform appy --auto-approve
+	terraform apply --auto-approve
 
 gke:
 	cd src/deployment && terraform init && \
