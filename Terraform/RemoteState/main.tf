@@ -4,13 +4,14 @@ module "gcs_buckets" {
   project_id = var.project_id
   prefix     = var.project_id
   names      = ["tf-remote"]
+
   force_destroy = {
-    "tf-backend-remote" = true
+    "eng-venture-320213-eu-tf-remote" = true
   }
 
   set_admin_roles = false
 
   versioning = {
-    "tf-backend-remote" = true
+    "eng-venture-320213-eu-tf-remote" = true
   }
 }
