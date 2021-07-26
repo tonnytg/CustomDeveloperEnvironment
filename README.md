@@ -5,8 +5,10 @@ Esse projeto está dividido em etapas
 
 - [x] Terraform
 - [x] Cluster K8S com GKE
-- [ ] Jenkins
-- [ ] Jenkins build workers
+- [ ] Argo CD Enviroment
+- [ ] Flux v2 Enviroment
+- [ ] Jenkins with Argo CD
+- [ ] Jenkins with Flux
 
 
 ### Build
