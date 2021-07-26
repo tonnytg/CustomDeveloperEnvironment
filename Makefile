@@ -18,5 +18,10 @@ gke:
 auth:
 	gcloud container clusters get-credentials mycluster-main
 
+
+argo:
+	kubectl create namespace argo
+	kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/install.yaml
+
 deploy:
 	kubectl apply -f Kubernetes/simple_pod.yml
