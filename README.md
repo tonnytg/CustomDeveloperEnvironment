@@ -7,8 +7,10 @@ Esse projeto está dividido em etapas
 - [x] Cluster K8S com GKE
 - [ ] Argo CD Enviroment
 - [ ] Flux v2 Enviroment
+- [ ] Use Popeye for Lint
 - [ ] Jenkins with Argo CD
 - [ ] Jenkins with Flux
+- [ ] Check Healthy of Cluster with Popeye
 
 
 ### Build
