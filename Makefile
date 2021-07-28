@@ -18,10 +18,24 @@ gke:
 auth:
 	gcloud container clusters get-credentials mycluster-main
 
+argo-install:
+	gcloud container clusters get-credentials mycluster-main
+	kubectl create namespace argocd
+	kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+	kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 
-argo:
-	kubectl create namespace argo
-	kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/install.yaml
+argo-forward:
+	kubectl port-forward svc/argocd-server -n argocd 8080:443
 
-deploy:
-	kubectl apply -f Kubernetes/simple_pod.yml
+argo-auth:
+	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+	echo "senha:" ${PASS}
+	argocd login localhost:8080 --username admin --password ${PASS} --insecure
+
+PASS=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`	
+
+argo-deploy:
+	bash ./Kubernetes/argocd/deploy-charts.sh create
+
+argo-deploy-delete:
+	bash ./Kubernetes/argocd/deploy-charts.sh delete 
