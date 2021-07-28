@@ -6,7 +6,7 @@ module "gcs_buckets" {
   names      = ["tf-remote"]
 
   force_destroy = {
-    "eng-venture-320213-eu-tf-remote" = true
+    "eng-venture-320213-eu-tf-remote" = false
   }
 
   set_admin_roles = false
