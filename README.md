@@ -23,13 +23,9 @@ Create your GKE Cluster
 
 `make gke`
 
-Login
+Login Cluster Kubernetes
 
 `make auth` 
-
-Deploy
-
-`make deploy`
 
 Argo Install
 
